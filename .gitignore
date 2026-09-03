@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+myenv/
+
+# Env / secrets
+.env
+*.env
+.env.*
+!.env.example
+*.secrets.env
+n8n.secrets.env
+
+# n8n runtime data (bind-mounted locally, never committed)
+n8n/data/
+
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.spyderproject
+.spyproject
