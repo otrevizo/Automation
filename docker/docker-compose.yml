@@ -1,0 +1,16 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:2.37.7
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5678:5678"   # localhost-only — not exposed to your LAN or the internet
+    environment:
+      - GENERIC_TIMEZONE=UTC    # set to your own timezone, e.g. America/Chicago
+      - TZ=UTC
+      - N8N_DIAGNOSTICS_ENABLED=false
+    env_file:
+      - ./n8n.secrets.env       # copy .env.example to this filename and fill in real values — never commit it
+    volumes:
+      - ./data:/home/node/.n8n   # n8n's own internal state (workflows, credentials, execution history)
+      - ./output:/data/output    # general output area for workflows to write files into
